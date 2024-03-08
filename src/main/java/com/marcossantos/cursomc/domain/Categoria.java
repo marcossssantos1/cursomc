@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,14 +15,13 @@ import jakarta.persistence.ManyToMany;
 public class Categoria implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String nome;
-	
-	@JsonManagedReference
-	@ManyToMany(mappedBy="categorias")
+
+	@ManyToMany(mappedBy = "categorias")
 	private List<Produto> produtos = new ArrayList<>();
 
 	public Categoria() {
@@ -50,9 +47,9 @@ public class Categoria implements Serializable {
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;	
+		this.nome = nome;
 	}
-	
+
 	public List<Produto> getProdutos() {
 		return produtos;
 	}
